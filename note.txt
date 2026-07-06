@@ -1,0 +1,4 @@
+rehefa maka anle git rehetra @ groupe de mampiasa an'ito:
+git fetch --all
+commande sady micree no tonga de miditra
+git checkout -b nom-branch-cree

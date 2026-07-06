@@ -16,7 +16,7 @@ class ArticlesController extends Controller
         // Charge les articles en incluant leur catégorie liée
         $articles = Articles::with('categories')->latest()->paginate(5);
 
-        return view('index', compact('articles'));
+        return view('Articles.index', compact('articles'));
     }
 
     /**
@@ -73,7 +73,7 @@ class ArticlesController extends Controller
         $article = Articles::findOrFail($id);
 
         $categories = Categories::all();
-        return view('modifierArticle', compact('article', 'categories'));
+        return view('Articles.editArticle', compact('article', 'categories'));
     }
 
     /**
