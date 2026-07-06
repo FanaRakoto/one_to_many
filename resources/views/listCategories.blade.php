@@ -57,13 +57,13 @@
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center gap-2">
 
-                                    <a href="#" class="p-2 text-slate-400 hover:text-white hover:bg-slate-700/60 rounded-lg transition-all duration-200" title="Modifier">
+                                    <a href="{{ route('categories.edit', $categorie->id) }}" class="p-2 text-slate-400 hover:text-white hover:bg-slate-700/60 rounded-lg transition-all duration-200" title="Modifier">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                         </svg>
                                     </a>
 
-                                    <form action="#" method="POST" class="inline" onsubmit="return confirm('Attention : Supprimer cette catégorie peut affecter les articles liés. Confirmer ?')">
+                                    <form action="{{ route('categories.destroy', $categorie->id) }}" method="POST" class="inline" onsubmit="return confirm('Attention : Supprimer cette catégorie peut affecter les articles liés. Confirmer ?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="p-2 text-slate-500 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all duration-200" title="Supprimer">

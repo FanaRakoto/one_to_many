@@ -12,3 +12,8 @@ Route::resources([
     'articles' => ArticlesController::class,
     'categories' => CategoriesController::class,
 ]);
+
+Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{category}', [CategoriesController::class, 'update'])->name('categories.update');
+
+

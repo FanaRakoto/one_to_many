@@ -61,8 +61,9 @@ class CategoriesController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        //
+    {   
+        $category = Categories::findOrFail($id);
+        return view('editCategories', compact('category'));
     }
 
     /**
@@ -70,7 +71,15 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+            $validated = $request->validate([
+        'title' => 'required|string|max:255',
+    ]);
+
+    $category = Categories::findOrFail($id);
+    $category->update($validated);
+
+    return redirect()->route('categories.index')
+        ->with('success', 'Catégorie mise à jour avec succès.');
     }
 
     /**
