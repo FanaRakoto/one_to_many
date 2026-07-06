@@ -70,7 +70,10 @@ class ArticlesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $article = Articles::findOrFail($id);
+
+        $categories = Categories::all();
+        return view('modifierArticle', compact('article', 'categories'));
     }
 
     /**
@@ -78,7 +81,29 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'prix' => 'required|string',
+            'categories_id' => 'required|exists:categories,id'
+        ], [
+            'title.required' => 'Le titre est obligatoire',
+            'description.required' => 'La description est obligatoire',
+            'categories_id.required' => 'Vous devez sélectionner une catégorie.',
+        ]);
+
+        $article = Articles::findOrFail($id);
+        
+        $article->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'prix' => $validatedData['prix'],
+            'categories_id' => $validatedData['categories_id'],
+        ]);
+
+        return redirect()
+            ->route('articles.index')
+            ->with('success', 'L\'article a été modifié avec succès');
     }
 
     /**
