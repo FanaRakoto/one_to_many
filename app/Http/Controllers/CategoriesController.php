@@ -13,9 +13,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
         $categories = Categories::latest()->paginate(8);
-        return view('listCategories', compact('categories'));
+        return view('categories.listCategories', compact('categories'));
     }
 
     /**
