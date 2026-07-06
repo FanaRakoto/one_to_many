@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Articles;
 use App\Models\Categories;
 
+
 class ArticlesController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class ArticlesController extends Controller
         // Charge les articles en incluant leur catégorie liée
         $articles = Articles::with('categories')->latest()->paginate(5);
 
-        return view('index', compact('articles'));
+        return view('Articles.index', compact('articles')); //ao anaty dossier artcicle ilay izy 
     }
 
     /**
@@ -26,7 +27,7 @@ class ArticlesController extends Controller
     {
         //
         $categories = Categories::all();
-        return view('createArticle', compact('categories'));
+        return view('Articles.createArticle', compact('categories'));
     }
 
     /**
@@ -70,7 +71,8 @@ class ArticlesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = categories::all();
+        return view('Articles.editArticle', compact ('articles','categories'));
     }
 
     /**
