@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Articles;
 use App\Models\Categories;
 
-
 class ArticlesController extends Controller
 {
     /**
@@ -17,7 +16,7 @@ class ArticlesController extends Controller
         // Charge les articles en incluant leur catégorie liée
         $articles = Articles::with('categories')->latest()->paginate(5);
 
-        return view('Articles.index', compact('articles')); //ao anaty dossier artcicle ilay izy 
+        return view('Articles.index', compact('articles'));
     }
 
     /**
@@ -27,7 +26,7 @@ class ArticlesController extends Controller
     {
         //
         $categories = Categories::all();
-        return view('Articles.createArticle', compact('categories'));
+        return view('createArticle', compact('categories'));
     }
 
     /**
@@ -71,8 +70,10 @@ class ArticlesController extends Controller
      */
     public function edit(string $id)
     {
-        $categories = categories::all();
-        return view('Articles.editArticle', compact ('articles','categories'));
+        $article = Articles::findOrFail($id);
+
+        $categories = Categories::all();
+        return view('Articles.editArticle', compact('article', 'categories'));
     }
 
     /**
@@ -80,7 +81,29 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'prix' => 'required|string',
+            'categories_id' => 'required|exists:categories,id'
+        ], [
+            'title.required' => 'Le titre est obligatoire',
+            'description.required' => 'La description est obligatoire',
+            'categories_id.required' => 'Vous devez sélectionner une catégorie.',
+        ]);
+
+        $article = Articles::findOrFail($id);
+        
+        $article->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'prix' => $validatedData['prix'],
+            'categories_id' => $validatedData['categories_id'],
+        ]);
+
+        return redirect()
+            ->route('articles.index')
+            ->with('success', 'L\'article a été modifié avec succès');
     }
 
     /**
