@@ -11,17 +11,47 @@
 
 <body>
     <header>
-        <nav class="flex gap-200 bg-black">
-            <div>
-                <span class="text-5xl text-red-700"><i class="fab fa-battle-net"></i></span>
-            </div>
-            <div>
-                <button class="bg-red-480 py-2 px-4 text-white text-[16px] rounded-[10px] hover:bg-red-950 cursor-pointer border-l-10 border-red-950 mr-2">Home</button>
-                <button class="bg-red-480 py-2 px-4 text-white text-[16px] rounded-[10px] hover:bg-red-950 cursor-pointer border-l-10 border-red-950 mr-2">About</button>
-                <button class="bg-red-480 py-2 px-4 text-white text-[16px] rounded-[10px] hover:bg-red-950 cursor-pointer border-l-10 border-red-950 mr-2">Services</button>
-                <button class="bg-red-480 py-2 px-4 text-white text-[16px] rounded-[10px] hover:bg-red-950 cursor-pointer border-l-10 border-red-950 mr-2">Contact</button>
-            </div>
-        </nav>
+<nav class="bg-slate-900 border-b border-slate-800 shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <span class="text-4xl text-red-500">
+                <i class="fab fa-battle-net"></i>
+            </span>
+
+            <h1 class="text-xl font-bold text-white">
+                <span class="text-red-500">E-</span><span class="text-rose-500">Shop</span>
+            </h1>
+        </div>
+
+        <!-- Menu -->
+        <div class="flex items-center gap-3">
+
+            <a href="{{ route('articles.index') }}"
+                class="px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition duration-300">
+                Home
+            </a>
+
+            <a href="#"
+                class="px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition duration-300">
+                About
+            </a>
+
+            <a href="#"
+                class="px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition duration-300">
+                Services
+            </a>
+
+            <a href="#"
+                class="px-4 py-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition duration-300">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+</nav>
     </header>
 
     <main>

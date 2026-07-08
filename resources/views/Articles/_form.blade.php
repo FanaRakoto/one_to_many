@@ -7,7 +7,9 @@
                 </label>
                 <input type="text" id="title" name="title" required
                     placeholder="Ex: Clavier Mécanique RGB"
+                    value="{{ old('title', $article->title ?? '') }}"
                     class="appearance-none relative block w-full px-4 py-3 border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm transition-all duration-300">
+                    
             </div>
 
             <div class="space-y-2">
@@ -16,6 +18,7 @@
                 </label>
                 <input type="number" id="prix" name="prix" step="0.01" required
                     placeholder="Ex: 150000"
+                    value="{{ old('prix', $article->prix ?? '') }}"
                     class="appearance-none relative block w-full px-4 py-3 border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm transition-all duration-300 font-mono">
             </div>
 
@@ -31,6 +34,7 @@
 
                         @foreach($categories as $category)
                         <option value="{{ $category->id }}" class="text-white bg-slate-900 py-2">
+                            @selected(old('categories_id', $article->categories_id ?? '') == $category->id)
                             {{ $category->title }}
                         </option>
                         @endforeach
@@ -48,10 +52,10 @@
             <label for="description" class="block text-sm font-medium text-slate-300">
                 Description de l'article :
             </label>
-            <textarea id="description" name="description" rows="4"
-                placeholder="Rédigez la description détaillée de l'article..."
-                class="appearance-none relative block w-full px-4 py-3 border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm transition-all duration-300 resize-none"></textarea>
-        </div>
+                <textarea id="description" name="description" rows="4"
+                    placeholder="Rédigez la description détaillée de l'article..."
+                    class="appearance-none relative block w-full px-4 py-3 border border-slate-700 bg-slate-900/50 text-white placeholder-slate-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 sm:text-sm transition-all duration-300 resize-none">{{ old('description', $article->description) }}</textarea>
+            </div>
 
         <div class="flex flex-col sm:flex-row items-center justify-end gap-3 pt-4 border-t border-slate-700/50">
             <button type="submit"
