@@ -26,7 +26,7 @@ class ArticlesController extends Controller
     {
         //
         $categories = Categories::all();
-        return view('createArticle', compact('categories'));
+        return view('Articles.createArticle', compact('categories'));
     }
 
     /**
@@ -112,6 +112,7 @@ class ArticlesController extends Controller
     public function destroy(string $id)
     {
         $articles = Articles::findOrFail($id);
-        
+        $articles->delete();
+        return redirect()->route('articles.index')->with('success','L\'article a été supprimé avec succès');
     }
 }
