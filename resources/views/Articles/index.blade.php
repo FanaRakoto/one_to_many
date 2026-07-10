@@ -107,5 +107,46 @@
         </div>
 
     </div>
+
+    {{-- SERVICE --}}
+    <div class="max-w-7xl w-full mx-auto space-y-8 py-12">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6">
+            <div>
+                <h1 class="text-3xl font-extrabold text-white tracking-tight">
+                    Nos <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-600">Services</span>
+                </h1>
+                <p class="mt-2 text-sm text-slate-400">
+                    Tout ce que nous mettons en place pour vous offrir la meilleure expérience d'achat.
+                </p>
+            </div>
+
+            <div>
+                <a href="{{ route('articles.create') }}" class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-red-600 to-rose-500 hover:from-red-500 hover:to-rose-400 rounded-xl shadow-lg shadow-red-900/30 hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Nous contacter   ->
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <div class="w-full h-30 bg-slate-800 rounded-2xl border border-red-500/5 grid grid-cols-4">
+                <div class="flex flex-col justify-center items-center border-r-1 border-slate-900 w-full h-full rounded-tl-2xl rounded-bl-2xl">
+                    <h2 class="text-rose-300 font-bold text-3xl">12 000+</h2>
+                    <p>CLIENTS SATISFAITS</p>
+                </div>
+                <div class="flex justify-center items-center border-r-1 border-slate-900 w-full h-full rounded-tl-2xl rounded-bl-2xl">
+                    
+                </div>
+                <div class="flex justify-center items-center border-r-1 border-slate-900 w-full h-full">
+                    
+                </div>
+                <div class="flex justify-center items-center w-full h-full rounded-tr-2xl rounded-br-2xl">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 @endsection
