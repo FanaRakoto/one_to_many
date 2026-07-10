@@ -13,7 +13,10 @@
     </div>
 
     <form action="{{ route('articles.update', $article->id) }}" method="POST" class="space-y-6">
-    
+     @csrf
+        @method('PUT') <!-- satria hanao modification de mampiasa @method('PUT')   -->
+     @include('Articles._form')
+    </form>
 </div>
 
 @endsection
